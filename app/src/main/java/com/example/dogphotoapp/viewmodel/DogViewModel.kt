@@ -28,6 +28,16 @@ class DogViewModel : ViewModel() {
         viewModelScope.launch {
             dogUiState = try {
                 val response = DogApi.retrofitService.getPhotos()
+
+                /*
+                Nota sobre esto:
+                A diferencia de la API de gatos vista en clase (que regresa una lista directa),
+                la API de Dog CEO que escogí, según mi busqueda, regresa un objeto contenedor que
+                almacena las URL de las imágenes en una propiedad llamada "message".
+                Investigando la documentación y estructura JSON de Dog CEO, mejor usé este mapeo
+                (mapIndexed) para adaptar las URL.*/
+
+
                 val listResult = response.message.mapIndexed { index, url ->
                     DogPhoto(id = index.toString(), url = url)
                 }
