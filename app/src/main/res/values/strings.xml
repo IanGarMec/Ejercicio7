@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DogPhotoApp</string>
+    <string name="problem_with_connection">Problem with conection</string>
+    <string name="dog_image">dog image</string>
+</resources>
